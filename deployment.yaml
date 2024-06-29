@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-todo-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: react-todo-app
+  template:
+    metadata:
+      labels:
+        app: react-todo-app
+    spec:
+      containers:
+      - name: react-todo-nginx
+        image: docker.io/mugunthanv/react-todo-nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
